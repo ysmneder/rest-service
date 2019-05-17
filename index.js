@@ -9,8 +9,8 @@ var HTTP_PORT = process.env.PORT || 8000
 app.listen(HTTP_PORT, () => {
     console.log("Server running on port %PORT%".replace("%PORT%",HTTP_PORT))
 });
-app.get("/", (req, res, next) => {
-    res.redirect('/api/match/:bookID');
+app.get("/api/match/:bookID", (req, res, next) => {
+    
     var sql = "select books.bookName ,authors.authorname  from match JOIN authors ON authors.id=match.authorID JOIN books ON books.id=match.bookID where match.bookID= ?   "
     var params = [req.params.bookID]
     db.all(sql, params, (err, rows) => {
@@ -25,9 +25,7 @@ app.get("/", (req, res, next) => {
         })
       });
 });
-app.get("/", (req, res, next) => {
-    res.redirect('/api/authors');  
-
+app.get("/api/authors", (req, res, next) => {
     var sql = "select * from authors"
     var params = []
     db.all(sql, params, (err, rows) => {
@@ -41,8 +39,7 @@ app.get("/", (req, res, next) => {
         })
       });
 });
-app.get("/", (req, res, next) => {
-    res.redirect('/api/books'); 
+app.get("/api/books", (req, res, next) => {
     var sql = "select * from books"
     var params = []
     db.all(sql, params, (err, rows) => {
