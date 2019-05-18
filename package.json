@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ysmneder/rest-service#readme",
   "dependencies": {
     "express": "^4.17.0",
+    "md5": "^2.2.1",
     "sqlite3": "^4.0.8"
   }
 }
