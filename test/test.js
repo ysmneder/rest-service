@@ -32,8 +32,6 @@ describe("SAMPLE unit test",function(){
 
 describe("GET /api/authors",function(){
   it("respond with json containing a list of all authors",function(done){
-
-    // calling home page api
     server
     .get("/api/authors")
     .set('Accept', 'application/json')
@@ -50,8 +48,6 @@ describe("GET /api/authors",function(){
 });
 describe("GET /api/books",function(){
   it("respond with json containing a list of all books",function(done){
-
-    // calling home page api
     server
     .get("/api/books")
     .set('Accept', 'application/json')
@@ -70,8 +66,6 @@ describe("GET /api/books",function(){
 describe("GET /api/listauthor/:bookName",function(){
 
   it("respond with json containing a single book",function(done){
-
-    // calling home page api
     server
     .get("/api/listauthor/devlet")
     .set('Accept', 'application/json')
@@ -89,8 +83,6 @@ describe("GET /api/listauthor/:bookName",function(){
 describe("GET /api/listbook/:authorname",function(){
 
   it("respond with json containing a single author",function(done){
-
-    // calling home page api
     server
     .get("/api/listbook/platon")
     .set('Accept', 'application/json')
@@ -112,8 +104,6 @@ let data ={
 
 
   it("respond with 201 created ",function(done){
-
-    // calling home page api
     server
     .post("/api/author/")
     .send(data)
@@ -136,13 +126,11 @@ var data ={
 
 
   it("respond with 201 created ",function(done){
-
-    // calling home page api
     server
     .post("/api/book/")
     .send(data)
     .expect("Content-type",/json/)
-    .expect(201) // THis is HTTP response
+    .expect(200) // THis is HTTP response
     .end(function(err,res){
       
       if (err) throw err;
