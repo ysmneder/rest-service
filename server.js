@@ -39,7 +39,7 @@ app.get("/api/listauthor/:bookName", (req, res, next) => {
     db.all(sql, params, (err, rows) => {
       
         if (err) {
-          res.status(400).json({"error":err.message});
+          res.status(400).json('user not found');
           return;
         }
         
@@ -59,6 +59,7 @@ app.post("/api/book/",(req, res, next) => {
     sqlzero='INSERT OR IGNORE  INTO authors(authorname) VALUES(?)'
     var params=[data.authorname]
     db.run(sqlzero, params, function (err, result){
+           
          if (err){
             res.status(400).json({"error": err.message})
             return;
@@ -73,6 +74,7 @@ app.post("/api/book/",(req, res, next) => {
             res.status(400).json({"error": err.message})
             return;
         }
+        
         res.json({
             "message": "success",
             "data": data,
@@ -85,7 +87,7 @@ app.post("/api/book/",(req, res, next) => {
 
 
 //endpoint to create new author
-app.post("/api/author",(req, res, next) => {
+app.post("/api/author/",(req, res, next) => {
    
     var data = {
         name: req.body.name  
@@ -97,11 +99,12 @@ app.post("/api/author",(req, res, next) => {
             res.status(400).json({"error": err.message})
             return;
         }
+        
         res.json({
-            "message": "success",
             "data": data,
             "id" : this.lastID
         })
+
     });
 } );
 
